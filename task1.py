@@ -107,7 +107,7 @@ for file_name in os.listdir("анкеты"):
         position = "'" + position + "'" if position else 'NULL'
 
         income = sheet.cell(15, 1).value
-        income = income if isinstance(income, float) else 'NULL'
+        income = income if (income or income == 0) else 'NULL'
 
         income_type = sheet.cell(17, 1).value
         income_type = "'" + income_type + "'" if income_type else 'NULL'
