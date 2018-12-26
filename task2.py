@@ -272,7 +272,7 @@ df_gb['IV'] = (df_gb.event - df_gb.non_event) * df_gb.woe
 df_gb.index = df_gb.index.astype(str)
 
 plt.figure(figsize=(12, 7));
-plt.scatter(list(range(df_gb.shape[0])), df_gb.woe)
+plt.plot(list(range(df_gb.shape[0])), df_gb.woe, 'o-')
 plt.grid()
 plt.xticks(list(range(df_gb.shape[0])), df_gb.index)
 plt.ylabel("WOE", fontsize=14)
@@ -282,7 +282,7 @@ plt.ion()
 plt.show()
 
 plt.figure(figsize=(12, 7));
-plt.scatter(list(range(df_gb.shape[0])), df_gb.IV)
+plt.plot(list(range(df_gb.shape[0])), df_gb.IV, 'o-')
 plt.grid()
 plt.xticks(list(range(df_gb.shape[0])), df_gb.index)
 plt.ylabel("IV", fontsize=14)
