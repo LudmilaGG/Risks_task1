@@ -92,10 +92,10 @@ for file_name in os.listdir("анкеты"):
         education = "'" + education + "'" if education else 'NULL'
 
         children = sheet.cell(8, 5).value
-        children = children if children else 'NULL'
+        children = children if isinstance(children, int) else 'NULL'
 
         family = sheet.cell(8, 6).value
-        family = family if family else 'NULL'
+        family = family if isinstance(family, int) else 'NULL'
 
         marital_status = sheet.cell(8, 7).value
         marital_status = "'" + marital_status + "'" if marital_status else 'NULL'
@@ -107,7 +107,7 @@ for file_name in os.listdir("анкеты"):
         position = "'" + position + "'" if position else 'NULL'
 
         income = sheet.cell(15, 1).value
-        income = income if income else 'NULL'
+        income = income if (income or income == 0) else 'NULL'
 
         income_type = sheet.cell(17, 1).value
         income_type = "'" + income_type + "'" if income_type else 'NULL'
@@ -119,7 +119,7 @@ for file_name in os.listdir("анкеты"):
         house_ownership = True if house_ownership == 'Y' else False
 
         age_of_car = sheet.cell(21, 1).value
-        age_of_car = age_of_car if age_of_car else 'NULL'
+        age_of_car = age_of_car if isinstance(age_of_car, int) else 'NULL'
 
         cur.execute("""
         INSERT INTO %s VALUES (%d, %s, '%s', '%s', %d, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %d, %s)
