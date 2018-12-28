@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <style>
+        .column {
+          float: left;
+          width: 48%;
+          padding: 5px;
+        }
+
+        .row::after {
+          content: "";
+          clear: both;
+          display: table;
+        }
+    </style>
+</head>
+<body>
+    <h1>{{ title }}</h1>
+    <h2>Данный отчет содержит оценки разделяющей способности показателя {{ column_name }} для горизонта риска {{ risk_horizon }}</h2>
+    <h3>В таблице представлены значения WOE и IV для различных значений показателя {{ column_name }}</h3>
+     {{ woe_iv_df }}
+    <h3>На графиках изображены значения WOE и IV для различных значений показателя {{ column_name }}</h3>
+    <div class="row">
+        <div class="column">
+            <img src='data:image/png;base64,{{ woe_plot }}' style="width:100%">
+        </div>
+        <div class="column">
+            <img src='data:image/png;base64,{{ iv_plot }}' style="width:100%">
+        </div>
+    </div>
+</body>
+</html>
